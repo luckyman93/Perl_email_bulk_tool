@@ -1,0 +1,63 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="/static/css/site.css" />
+</head>
+
+<body>
+  <div>
+    <img id="logo" src="https://adwar.com/static/new/assets/images/logo.png" />
+   <h1>Bulk email sending tool</h1>
+  </div>
+
+[% IF error; PROCESS _errors; END %]
+<form method="POST" %]" enctype='multipart/form-data'>
+    <div>
+        <label for="subject">Subject line for the email :</label>
+        <input required type="text" name="subject" id="subject" />
+    </div>
+    <div>
+        <label for="image">Image to send :</label>
+        <input required type="file" name="image_file" id="image_file" accept="image/*" />
+    </div>
+    <div>
+        <label for="link_uri">(Optional) Click-through link :</label>
+        <input type="text" name="link_uri" id="link_uri" />
+    </div>
+    <div>
+        <label for="email_list">CSV file of email addresses :</label>
+        <input required type="file" name="csv_file" id="csv_file" accept=".csv,text/csv" />
+        <br />
+        <label></label>
+        <span style="font-size: small">Email addresses must be in the third column (column C)</span>
+    </div>
+    <div class="center">
+        <input type="submit" id="submit_button" value="Send emails" disabled />
+    </div>
+</form>
+
+<div id="progress_indicator">
+    <h1 id="send_header">Sending in progress...</h1>
+    <p id="send_notice">Do not close or refresh this page!</p>
+    <progress id="send_progress" max="0" value="0" />
+</div>
+<div id="success_information">
+    <div>
+        <label>Number of successful sends :</label>
+        <span id="success_nums"></span>
+    </div>
+    <div>
+        <label style="color: red; text-align:left; padding-left: 150px;">Error list :</label>
+        <span id="error_list"></span>
+    </div>
+</div>
+<script type='text/javascript' src="/static/js/mailer.js"></script>
+</body>
+</html>
+
+[% BLOCK _errors %]
+<h1>[% error %]</h1>
+[% END %]

@@ -1,0 +1,2 @@
+[% IF image_link; image_link; ELSE; image_filename; END %]
+[[% image_uri %]]

@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  adwar-marketing:
+   container_name: adwar-marketing
+   image: adwar-marketing:latest
+   volumes:
+    - type: bind
+      source: /home/vhosts/adwar.com/media/adverts
+      target: /home/vhosts/adwar.com/media/adverts
+   networks:
+    - vhosts_default
+   restart: unless-stopped
+  
+   env_file:
+     - .env-sandbox-1
+   labels:
+    - "traefik.http.routers.marketing-sandbox-adwar.rule=Host(`marketing.sandbox.adwar.com`)"
+    - "traefik.http.routers.marketing-sandbox-adwar.middlewares=adwar-auth"
+    - "traefik.http.routers.marketing-sandbox-adwar.entrypoints=websecure"
+    - "traefik.http.routers.marketing-sandbox-adwar.tls=true"
+    - "traefik.http.routers.marketing-sandbox-adwar.tls.certresolver=leresolver"
+    - "traefik.http.middlewares.adwar-auth.basicauth.users=adwar:$$2y$$05$$Mo9AcHYj0eXKvZunFlG2guYQu1jYc2YWca5QbhDxtHeUZwtP70j5W"
+
+ 
+networks:
+  vhosts_default:
+    external: true
+    name: vhosts_default
+
+     

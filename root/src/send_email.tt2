@@ -1,0 +1,36 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="/static/css/site.css" />
+</head>
+
+<body>
+  <div>
+    <img id="logo" src="https://adwar.com/static/new/assets/images/logo.png" />
+   <h1>Bulk email sending tool</h1>
+  </div>
+
+  <h2>Results</h2>
+  <table>
+    <tr>
+      <th>Email address</th>
+      <th>Success?</th>
+    </tr>
+[% FOREACH r IN results %]
+    <tr>
+      <td>[% r.email %]</td>
+      <td>
+[% IF r.success %]
+      Yes ([% r.message %])
+[% ELSE %]
+      No ([% r.message %])
+[% END %]
+      </td>
+    </tr>
+[% END %]
+  </table>
+</body>
+</html>

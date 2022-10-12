@@ -1,0 +1,10 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body style="text-align:center">
+[% IF image_link; '<a href="' _ image_link _ '">'; END -%]
+<img src="cid:[% image_filename %]" alt="Adwar image" style="width:600px" />
+[%- IF image_link; '</a>'; END %]
+<br>
+</body>
+</html>
