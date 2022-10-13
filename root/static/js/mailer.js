@@ -24,9 +24,10 @@ function process_chunk(i) {
         document.getElementById("success_nums").innerHTML = success_lines.length;
 
         if ( failur_lines.length !== 0) {
+          document.getElementById("error_info").style.display='block';
           document.getElementById("error_list").appendChild(error_table());
         } else {
-          document.getElementById("error_list").appendChild("No");
+          document.getElementById("error_info").style.display='none';
         }
 
         // reset variable

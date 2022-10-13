@@ -46,10 +46,10 @@
 </div>
 <div id="success_information">
     <div>
-        <label>Number of successful sends :</label>
+        <span>Total number of processed emails :</span>
         <span id="success_nums"></span>
     </div>
-    <div>
+    <div id="error_info">
         <label style="color: red; text-align:left; padding-left: 150px;">Error list :</label>
         <span id="error_list"></span>
     </div>
